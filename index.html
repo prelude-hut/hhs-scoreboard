@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Scoreboard</title>
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="./toast.css">
+    <link rel="stylesheet" href="./style2.css">
+    <link rel="preload" href="./assets/cog-f.svg" as="image">
+    <link rel="preload" href="./assets/logo-small-no-overlay.png" as="image">
+</head>
+<body>
+    <header>
+        <img class="headerLogo" id="Slogo" src="./assets/logo-small-black-overlay.png" draggable="false" onclick="window.location.href = 'https://hhs.sa.edu.au'"></img>
+        <h3>House Teams Live Scoreboard</h3>
+        <img class="headerLogo" id="Cog" src="./assets/cog.svg" draggable="false" onclick="showPopup()"></img>
+    </header>
+
+    <main>
+		<div class="houseCard" id="greenCard">
+            <div>
+                <h1 class="position" id="greenPosition">1<sup>st</sup></h1>
+            </div>
+            <div>
+                <h2 class="teamName" id="greenName">Onka</h2>
+            </div>
+            <div class="scoresContainer" id="greenScore">
+                <h2 class="scores" id="greenPoints">3&nbspPoints</h2>
+            </div>
+        </div>
+
+        <div class="houseCard" id="yellowCard">
+            <div>
+                <h1 class="position" id="yellowPosition">2<sup>nd</sup></h1>
+            </div>
+            <div>
+                <h2 class="teamName" id="yellowName">Scott</h2>
+            </div>
+            <div class="scoresContainer" id="yellowScore">
+                <h2 class="scores" id="yellowPoints">2&nbspPoints</h2>
+            </div>
+        </div>
+
+        <div class="houseCard" id="redCard">
+            <div>
+                <h1 class="position" id="redPosition">3<sup>rd</sup></h1>
+            </div>
+            <div>
+                <h2 class="teamName" id="redName">Cox</h2>
+            </div>
+            <div class="scoresContainer" id="redScore">
+                <h2 class="scores" id="redPoints">1&nbspPoints</h2>
+            </div>
+        </div>
+
+        <div class="houseCard" id="blueCard">
+            <div>
+                <h1 class="position" id="bluePosition">4<sup>th</sup></h1>
+            </div>
+            <div>
+                <h2 class="teamName" id="blueName">Sturt</h2>
+            </div>
+            <div class="scoresContainer" id="blueScore">
+                <h2 class="scores" id="bluePoints">0&nbspPoints</h2>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="popup" id="popup">
+        <div class="popup-header">
+          <span class="popup-label">Options</span>
+          <span class="close-btn" onclick="hidePopup()">𐌗</span>
+        </div>
+        <div class="popup-content">
+          <button class="setting-btn" id="refreshButton" onclick="fetchScores('true')">Refresh Scores</button>
+          <button class="setting-btn" id="contrastBtn">High Contrast</button>
+          <button class="setting-btn" onclick="alert('Please email Josh.Newman429@schools.sa.edu.au for help with this website')">Help</button>
+          <button class="setting-btn" id="manageBtn">Manage</button>
+          <button class="setting-btn" id="licenseBtn">Legal</button>
+        </div>
+      </div>      
+
+    <div id="custom-toast" class="toast">
+        <span id="toast">Error getting scores. Are you connected to the internet?</span>
+        <button id="dismiss-toast" onclick="dismissToast()">Dismiss</button>
+        <button id="email-toast">Get Help</button>
+    </div>
+
+    <script src="./common.js"></script>
+    <script src="./script.js"></script>
+    <script src="./board.js"></script>
+</body>
+</html>

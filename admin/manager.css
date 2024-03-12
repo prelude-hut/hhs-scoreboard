@@ -1,0 +1,717 @@
+@font-face {
+    font-family: "Open Sans";
+    src: url(../fonts/WOFF2/OpenSans-Bold.woff2) format("woff2"), url(../fonts/WOFF/OpenSans-Bold.woff) format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../fonts/WOFF2/OpenSans-Regular.woff2) format("woff2"), url(../fonts/WOFF/OpenSans-Regular.woff) format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #f1f1f1;
+}
+
+a {
+    color: #c850be;
+}
+
+canvas {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+::selection {
+    background: #ff8de673;
+}
+
+.container {
+    margin: 6px auto;   
+    max-width: 440px;
+    padding: 0 20px;
+    z-index: 100;
+    position: relative;
+    display: none;
+}
+
+.unauth {
+    margin: 2vh auto;   
+}
+
+.adminControls,
+.userControls {
+    max-width: 440px;
+    padding: 0 20px 0 20px;
+    margin-bottom: 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    display: none;
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+.userControls button {
+    width: 31%;
+}
+
+#sendNewButton {
+    transition: transform 0.3s ease;
+}
+
+#inviteListDiv {
+    max-height: 450px;
+    overflow-y: scroll;
+}
+
+#userListDiv {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.inviteList {
+    padding-bottom: 15px;
+    font-size: 14px;
+}
+
+#createInviteButton {
+    width: 75px;
+}
+
+.adminControls button,
+.userControls button,
+.cciButton,
+.inviteButtons,
+#contributions button,
+#myPendingRequestsList button,
+.innerUserManager button,
+.modal button {
+    background-color: #ca53c2;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.innerUserManager div {
+    margin-bottom: 10px;
+}
+
+.innerUserManager b:last-child {
+    margin-bottom: -10px;
+}
+
+.adminControls button {
+    width: 23%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.inviteButtons,
+#contributions button,
+#myPendingRequestsList button,
+.innerUserManager button {
+    margin: 0 2px 0 2px;
+}
+
+#contributions button,
+#myPendingRequestsList button {
+    margin-bottom: 20px;
+}
+
+#gsfs,
+#sendNewButton {
+    width: 185px;
+}
+
+.adminControls button:hover,
+.userControls button:hover,
+.cciButton:hover,
+.inviteButtons:hover,
+#contributions button:hover,
+#myPendingRequestsList button:hover,
+.innerUserManager button:hover,
+.modal button:hover {
+    background-color: #b044af; 
+}
+
+.adminControls button.active,
+.userControls button.active,
+.cciButton:active,
+.inviteButtons:active,
+#contributions button:active,
+#myPendingRequestsList button:active,
+.innerUserManager button:active,
+.modal button:active {
+    background-color: #9c3d9b;
+}
+
+#overrideScores {
+    display: none;
+}
+
+#gsfs {
+    margin-bottom: 15px;
+}
+
+#allInvites {
+    display: none;
+}
+
+.wrapper {
+    width: 100%;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.wrapper .title {
+    height: 90px;
+    background: #ca53c2;
+    border-radius: 30px 30px 0 0;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerChild {
+    padding: 20px 25px 20px 25px;
+    text-align: center;
+}
+
+p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+.arrows {
+    height: 36px;
+    width: 36px;
+    background-color: #fff;
+    border: none;
+    border-radius: 100px;
+    color: #000;
+    border: 1px solid #aaa;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.arrows.clicked {
+    background-color: #ca53c2;
+    color: #fff;
+}
+
+.arrows:hover {
+    border-color: #ca53c2;
+}
+
+.downArrow,
+.adownArrow {
+    margin-right: 3px;
+}
+
+.upArrow,
+.aupArrow {
+    margin-left: 3px;
+}
+
+.cci {
+    margin-bottom: 15px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.cci {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#emailInput,
+input[type="number"],
+#comment,
+.modal input {
+    padding: 8px;
+    border: 1px solid #aaa;
+    border-radius: 100px;
+    box-sizing: border-box;
+    width: 50%;
+    margin-bottom: 5px;
+}
+
+#emailInput:hover,
+input[type="number"]:hover,
+#comment:hover,
+.modal input:hover {
+    border-color: #ca53c2;
+}
+
+#emailInput:focus,
+#comment:focus,
+.modal input:focus {
+    outline: none;
+}
+
+input[type="number"]:focus {
+    font-weight: 700;
+    outline: none;
+}
+
+#comment {
+    width: calc(50% + 80px);
+    margin-bottom: 10px;
+    min-height: 36px;
+    height: fit-content;
+}
+
+#emailInput,
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#emailInput,
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+#emailInput {
+    width: 55%;
+}
+
+.sturtInput {
+    margin-bottom: 5px;
+}
+
+.wrapper form {
+    padding: 30px 25px 25px 25px;
+}
+
+.wrapper form .row {
+    height: 45px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.wrapper form .row input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 57px;
+    border-radius: 500px;
+    border: 1px solid lightgrey;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+form .row input:focus {
+    border-color: #ca53c2;
+}
+
+form .row input::placeholder {
+    color: #999999;
+}
+
+.wrapper form .row i {
+    position: absolute;
+    width: 45px;
+    height: 100%;
+    color: #fff;
+    font-size: 18px;
+    background: #ca53c2;
+    border: 1px solid #ca53c2;
+    border-radius: 500px 500px 500px 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon svg {
+    width: 24px;
+}
+
+.wrapper form .pass {
+    margin: -8px 0 20px 0;
+}
+
+.wrapper form .pass a {
+    color: #ca53c2;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.wrapper form .pass a:hover {
+    text-decoration: underline;
+}
+
+.wrapper form .button input {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 0px;
+    background: #ca53c2;
+    border: 1px solid #ca53c2;
+    cursor: pointer;
+}
+
+form .button input:hover {
+    background: #a945a2;
+}
+
+.wrapper form .signup-link {
+    text-align: center;
+    font-size: 17px;
+}
+
+.wrapper form .signup-link a {
+    color: #ca53c2;
+    text-decoration: none;
+}
+
+form .signup-link a:hover {
+    text-decoration: underline;
+}
+
+#haveAccountLink {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+#helpSigningUpLink {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#updateButton {
+    width: 131px;
+}
+
+.sl-first {
+    padding: 15px 0 5px 0;
+}
+
+#loginButton {
+    margin-top: 12.5px;
+    margin-bottom: 3px;
+}
+
+#noAccountLink {
+    padding: 0;
+    margin-top: 3px;
+}
+
+.scoreboardButton {
+    position: fixed;
+    bottom: 18px;
+    left: 18px;
+    background-color: #ca53c2;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    z-index: 999;
+    box-shadow: 0px 4px 10px 1px rgba(224, 16, 214, 0.1);
+}
+
+.scoreboardButton:hover {
+    background-color: #9c3d9b;
+}
+
+header > *:first-child {
+    margin-left: 16px;
+}
+
+header > *:nth-last-child(1) {
+    margin-right: 16px;
+}
+
+.logDate {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.logDate:first-of-type {
+    margin-top: -5px;
+}
+  
+.logDetails {
+    padding-bottom: 5px;
+    font-size: 16px;
+    user-select: none;
+    color: #9c3d9b;
+}
+
+.logSummary {
+    color: black;
+}
+
+#logContainer {
+    max-height: 450px;
+    overflow-y: scroll;
+    padding: 20px 4px 20px 20px;
+}
+
+.moreListItem {
+    width: 90%;
+    height: 50px;
+    align-items: center;
+    margin: auto 5% auto 5%;
+    border-color: #ca53c2;
+    border-radius: 30px;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    user-select: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.moreListItem:hover {
+    background-color: #ca53c2;
+    color: white;
+    transition: ease 0.3s;
+}
+
+.backButton {
+    margin-top: -5px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: 700;
+    cursor: pointer;
+    max-width: 100px;
+}
+
+.backButton:hover {
+    color: #ca53c2;
+}
+
+#contributionsCC,
+#myrequestsinner {
+    max-height: 500px;
+    overflow-y: scroll;
+    padding-left: 38px;
+    padding-bottom: 5px;
+}
+
+#contributionsCC li,
+#myPendingRequestsList li {
+    list-style: disc inside;
+    font-size: 16px;
+    margin: 0 5px 0 5px;
+}
+
+#contributionsCC li:last-child,
+#myPendingRequestsList:last-child {
+    margin-bottom: 10px;
+}
+
+#contributionsCC li:first-child,
+#myPendingRequestsList :first-child {
+    margin-top: 5px;
+}
+
+#contributionsCC p {
+    margin-top: 10px;
+}
+
+#contributionsCC b,
+#myrequestsinner {
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+
+#myPendingRequestsList b,
+#usermanagerCC {
+    font-size: 16px;
+}
+
+.innerUserManager:first-of-type {
+    margin-bottom: 25px;
+    padding-left: 14px;
+}
+
+#myrequestsinner button {
+    margin-top: 10px;
+}
+
+.pendingRequests {
+    padding-top: 10px;
+    margin-bottom: -10px;
+}
+
+#usermanager b {
+    font-size: 16px;
+}
+
+#awaitingApprovalDiv {
+    max-height: 120px;
+    overflow-y: scroll;
+}
+
+#currentAccountsDiv {
+    max-height: 220px;
+    overflow-y: scroll;
+}
+
+.modal {
+    width: 400px;
+    background-color: white;
+    border-radius: 25px;
+    font-size: 16px;
+    padding: 20px;
+    position: absolute;
+    left: calc(50vw - 200px);
+    display: none;
+    top: 25vh;
+    z-index: 1001;
+}
+
+.modal input {
+    margin: 5px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal input {
+    width: 95%;
+}
+
+
+@media screen and (max-width: 650px) {
+    canvas {
+        display: none;
+    }
+
+    .modal {
+        width: 95vw;
+        left: 2.5vw;
+    }
+
+    body,
+    html {
+        overflow: scroll;
+    }
+    
+    .container {
+        margin-top: 10px;
+        padding: 0 5px 0 5px;
+    }
+
+    .adminControls,
+    .userControls {
+        padding: 0 5px 0 5px;
+    }
+
+    .scoreboardButton {
+        display: none;
+    }
+
+    .popup-container {
+        width: calc(100vw - 20px);
+    }
+
+    #logContainer,
+    #contributionsCC {
+        padding: 20px 10px 20px 10px;
+    }
+
+    .innerUserManager,
+    #awaitingApprovalDiv,
+    #currentAccountsDiv {
+        padding-left: 0px;
+    }
+
+    #popup {
+        width: calc(100vw - 50px);
+        position: absolute;
+        top: 20%;
+        left: auto;
+        right: 5px;
+    }
+
+    .setting-btn {
+        width: 97%;
+        align-items: center;
+        margin-left: 1.5%;
+        height: 50px;
+        border-radius: 100px;
+        font-size: 15px;
+    }
+
+    .popup-label,
+    .close-btn {
+        font-size: 20px;
+        color: white;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .container {
+    margin-bottom: 20vh;
+    }
+
+    .adminControls,
+    .userControls {
+        padding: 0 10px;
+    }
+    
+}
+
+.container {
+    display: none;
+}
+
+.adminOnly {
+    display: none;
+}

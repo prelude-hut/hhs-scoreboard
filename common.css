@@ -1,0 +1,44 @@
+body {
+    background-color: #f1f1f1;
+    font-family: "Open Sans", sans-serif;
+    font-size: 80%;
+}
+
+header {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 19.2px;
+    margin-top: 14.4px;
+}
+
+/* Left icon */
+header > *:first-child {
+    margin-left: 8px;
+}
+
+/* Right icon */
+header > *:nth-last-child(1) {
+    margin-right: 8px;
+}
+
+h3 {
+    font-size: 24px;
+    margin: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.headerLogo {
+    height: 28px;
+    width: auto;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}

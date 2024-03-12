@@ -1,0 +1,152 @@
+/*Bottom Popup*/
+.toast {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    font-family: "Open Sans", sans-serif;
+}
+
+.toast button {
+    margin-left: 10px;
+    background-color: #ca53c2;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#custom-toast.show {
+    display: block;
+}
+
+/*Cog Menu*/
+.popup {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 71px;
+    right: 20px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 30px;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    display: none;
+    z-index: 1000;
+}
+  
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0px;
+}
+  
+.popup-label {
+    font-size: 1.2em;
+}
+  
+.close-btn {
+    cursor: pointer;
+}
+  
+.popup-content {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+  
+.setting-btn {
+    background-color: white;
+    color: black;
+    padding: 8px 8px;
+    border: none;
+    width: 170px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.1s
+}
+
+.setting-btn:hover {
+    background-color: #ececec;
+}
+
+.setting-btn.active {
+    background-color: #c5c5c5;
+    color: #000;
+    
+}
+
+.setting-btn.clicked {
+    background-color: #c5c5c5;
+}
+
+/* Popup container styles */
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-width: 390px;
+    overflow-wrap: anywhere;
+}
+  
+.popup-container-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+    #popup {
+        width: calc(100vw - 50px);
+        position: absolute;
+        top: 20%;
+        left: auto;
+        right: 5px;
+    }
+
+    .setting-btn {
+        width: 97%;
+        align-items: center;
+        margin-left: 1.5%;
+        height: 50px;
+        border-radius: 100px;
+        font-size: 15px;
+    }
+
+    .popup-label,
+    .close-btn {
+        font-size: 20px;
+        color: white;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .popup-container {
+        left: calc(50% - 8.75px);
+    }
+}
+
+

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Teams Scoreboard Manager</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../toast.css">
+    <link rel="stylesheet" href="./manager.css">
+    <link rel="preload" href="../assets/user-square.svg" as="image">
+</head>
+<body>
+    <header>
+      <img class="headerLogo" id="Slogo" alt="logo" src="../assets/logo-small-black-overlay.png" draggable="false" onclick="window.location.href = '..'">
+      <h3>Scoreboard Manager</h3>
+      <img class="headerLogo" id="Cog" src="../assets/user-circle.svg" alt="options" draggable="false" onclick="showPopup()">
+    </header>
+    
+    <div id="login" class="container unauth">
+        <div class="wrapper">
+          <div class="title"><span>Log In</span></div>
+          <form id="signinForm">
+            <div class="row">
+                <i class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -5 24 24" width="28" fill="#ffffff"><path d="M3.598 2l5.747 5.12a1 1 0 0 0 1.33 0L16.423 2H3.598zM18 3.273l-5.994 5.341a3 3 0 0 1-3.992 0L2 3.254V12h16V3.273zM2 0h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"></path></svg>
+                </i>
+              <input type="text" placeholder="Email (@schools.sa.edu.au)" name="email" required>
+            </div>
+            <div class="row">
+                <i class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 24 24" width="28" fill="currentColor"><path d="M8.612 16.337l3.746-3.747 1.027.183a5 5 0 1 0-4.039-4.039l.184 1.028-6.994 6.994.177 2.651 2.651.177 1.833-1.833-.707-.707a1 1 0 0 1 1.415-1.414l.707.707zm.707-13.435a7 7 0 1 1 3.715 11.84L6.137 21.64l-4.43-.295a1 1 0 0 1-.932-.932l-.295-4.43 6.898-6.898a6.992 6.992 0 0 1 1.94-6.183zm4.242 5.656A2 2 0 1 1 16.39 5.73a2 2 0 0 1-2.829 2.828z"></path></svg>
+                </i>
+              <input type="password" placeholder="Password" name="password" required>
+            </div>
+            <div style="display: none;" class="pass">Forgot password?</div>
+            <div class="row button">
+              <input type="submit" value="Login" id="loginButton">
+            </div>
+            <div class="signup-link sl-first">Don't have an account? <a href="#" onclick="showContainer('signup')">Create One</a></div>
+            <div class="signup-link">Need help logging in? <a href="#" onclick="window.location.href = 'mailto:Josh.Newman429@schools.sa.edu.au'">Click Here</a></div>
+          </form>
+        </div>
+      </div>
+
+      <div id="signup" class="container unauth">
+        <div class="wrapper">
+          <div class="title"><span>Sign Up</span></div>
+          <form id="signupForm">
+            <div class="row">
+              <i class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -5 24 24" width="28" fill="#ffffff"><path d="M3.598 2l5.747 5.12a1 1 0 0 0 1.33 0L16.423 2H3.598zM18 3.273l-5.994 5.341a3 3 0 0 1-3.992 0L2 3.254V12h16V3.273zM2 0h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"></path></svg>
+              </i>
+              <input type="email" placeholder="Email (@schools.sa.edu.au)" name="email" id="signupEmail" required>
+            </div>
+            <div class="row">
+              <i class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 24 24" width="28" fill="currentColor"><path d="M8.612 16.337l3.746-3.747 1.027.183a5 5 0 1 0-4.039-4.039l.184 1.028-6.994 6.994.177 2.651 2.651.177 1.833-1.833-.707-.707a1 1 0 0 1 1.415-1.414l.707.707zm.707-13.435a7 7 0 1 1 3.715 11.84L6.137 21.64l-4.43-.295a1 1 0 0 1-.932-.932l-.295-4.43 6.898-6.898a6.992 6.992 0 0 1 1.94-6.183zm4.242 5.656A2 2 0 1 1 16.39 5.73a2 2 0 0 1-2.829 2.828z"></path></svg>
+              </i>
+              <input type="password" placeholder="Password" name="password" required>
+            </div>
+            <div class="row">
+              <i class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 24 24" width="28" fill="currentColor"><path d="M8.612 16.337l3.746-3.747 1.027.183a5 5 0 1 0-4.039-4.039l.184 1.028-6.994 6.994.177 2.651 2.651.177 1.833-1.833-.707-.707a1 1 0 0 1 1.415-1.414l.707.707zm.707-13.435a7 7 0 1 1 3.715 11.84L6.137 21.64l-4.43-.295a1 1 0 0 1-.932-.932l-.295-4.43 6.898-6.898a6.992 6.992 0 0 1 1.94-6.183zm4.242 5.656A2 2 0 1 1 16.39 5.73a2 2 0 0 1-2.829 2.828z"></path></svg>
+              </i>
+              <input type="password" placeholder="Confirm Password" name="confirmPassword" required>
+            </div>
+            <div class="row button">
+              <input type="submit" value="Sign Up" id="signupButton">
+            </div>
+            <div class="signup-link sl-first" id="haveAccountLink">Already have an account? <a href="#" onclick="showContainer('login')">Log In</a></div>
+            <div class="signup-link" id="helpSigningUpLink">Need help signing up? <a href="#" onclick="window.location.href = 'mailto:Josh.Newman429@schools.sa.edu.au'">Click Here</a></div>
+          </form>
+        </div>
+      </div>
+      
+      <div id="awaitingapprovalcontainer" class="container">
+        <div class="wrapper">
+            <div class="title"><span>Welcome</span></div>
+            <div class="containerChild">
+              <p>Thanks for creating an account</p><br>
+              <p>Your account is awaiting approval</p><br>
+              <p>Refresh this page for updates</p>
+              </div>
+            </div>
+        </div>
+    </div>
+
+      <div class="adminControls">
+        <button id="defaultAdminButton" onclick="scoreButton()">Score</button>
+        <button onclick="showContainer('contributions'); displayContributions();">Requests</button>
+        <button onclick="showContainer('logs'); displayLogs();">History</button>
+        <button onclick="showContainer('more')">More</button>
+      </div>
+
+      <div class="userControls">
+        <button id="defaultUserButton" onclick="scoreButton()">Score</button>
+        <button onclick="showContainer('logs'); displayLogs();">History</button>
+        <button onclick="showContainer('myrequests'); displayPendingRequests();">My Requests</button>
+      </div>
+
+      <div id="score" class="container">
+        <div class="wrapper">
+          <div class="title"><span>Modify Scores</span></div>
+            <div class="containerChild" id="updateScores">
+              <p class="adminOnly">Values entered here will be added or subtracted to the respective teams. If you want to override scores instead, <a href="#" onclick="ors(); fetchScores();">click here</a></p>
+              <p class="userOnly">Values entered here will be added or subtracted to the respective teams.</p><br>
+              <div id="aOnka">
+                <p>Onka (Green)</p><div class="inputLayer"><button class="adownArrow arrows">&#9660;</button><input class="cci" type="number"><button class="aupArrow arrows" >&#9650;</button></div>
+            </div>
+            <div id="aScott">
+                <p>Scott (Yellow)</p><div class="inputLayer"><button class="adownArrow arrows">&#9660;</button><input class="cci" type="number"><button class="aupArrow arrows" >&#9650;</button></div>
+            </div>
+            <div id="aCox">
+                <p>Cox (Red)</p><div class="inputLayer"><button class="adownArrow arrows" >&#9660;</button><input class="cci" type="number"><button class="aupArrow arrows" >&#9650;</button></div>
+            </div>
+            <div id="aSturt">
+                <p>Sturt (Blue)</p><div class="inputLayer sturtInput"><button class="adownArrow arrows" >&#9660;</button><input class="cci" type="number"><button class="aupArrow arrows" >&#9650;</button></div>
+                <p>Comment</p>
+                <input type="text" id="comment"><br>
+                <button onclick="sendScores('update')" class="cciButton" id="updateButton">Update Scores</button>
+            </div>
+          </div>
+            <div class="containerChild" id="overrideScores">
+              <p>You are about to <b>override</b> the scores. Values entered here will be used as the new score.</p><br> <p>This can cause issues if multiple people are changing scores simultaneously</p><br><p><a href="#" onclick="uds()">Click here to add to the scores instead</a></p><br> 
+              <button id="gsfs" onclick="fetchScores()" class="cciButton">Get scores from server</button><br>
+              <div id="Onka">
+                <p>Onka (Green)</p><div class="inputLayer"><button class="downArrow arrows">&#9660;</button><input class="cci" type="number"><button class="upArrow arrows" >&#9650;</button></div>
+            </div>
+            <div id="Scott">
+                <p>Scott (Yellow)</p><div class="inputLayer"><button class="downArrow arrows">&#9660;</button><input class="cci" type="number"><button class="upArrow arrows" >&#9650;</button></div>
+            </div>
+            <div id="Cox">
+                <p>Cox (Red)</p><div class="inputLayer"><button class="downArrow arrows">&#9660;</button><input class="cci" type="number"><button class="upArrow arrows" >&#9650;</button></div>
+            </div>
+            <div id="Sturt">
+                <p>Sturt (Blue)</p><div class="inputLayer sturtInput"><button class="downArrow arrows" >&#9660;</button><input class="cci" type="number"><button class="upArrow arrows" >&#9650;</button></div>
+                <button onclick="sendScores('override'); disableButton('sendNewButton');" class="cciButton" id="sendNewButton">Override Server Scores</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contributions" class="container">
+      <div class="wrapper">
+          <div class="title"><span>Requests</span></div>
+          <div id="contributionsCC" class="containerChild">
+            </div>
+          </div>
+      </div>
+  </div>
+  
+
+  <div id="logs" class="container">
+    <div class="wrapper">
+      <div class="title"><span>History</span></div>
+      <div id="logContainer" class="containerChild"></div>
+  </div>
+  </div>
+
+      <div id="more" class="container">
+        <div class="wrapper">
+          <div class="title"><span>More</span></div>
+          <div class="containerChild">
+            <p>The functionality for these buttons is still a work in progress (:</p><br>
+            <div class="moreListItem">View Detailed Logs ➜</div>
+            <div class="moreListItem" onclick="showContainer('usermanager'); fetchUserLists();">Manage User Accounts ➜</div>
+            <div class="moreListItem" onclick="usersButton()">Manage Admin Accounts ➜</div>
+            <div class="moreListItem" style="cursor: not-allowed;">Manage Events ➜</div>
+      </div>
+      </div>
+      </div>
+
+      <div id="users" class="container">
+        <div class="wrapper">
+            <div class="title"><span>Manage Admin Users</span></div>
+            <div class="containerChild" id="allUsers">
+                <p class="backButton" onclick="showContainer('more')"><span class="leftArrow">↩</span> Go Back</p>
+                <p>You can create links that people can use to create an account for this website. <a href="#" onclick="fetchInvites(); toggleAccessControlView()">View active invites</a></p><br>
+                <p>Enter an email below to invite someone</p><input type="text" id="emailInput"> 
+                <button class="cciButton" id="createInviteButton" placeholder="Email (@schools.sa.edu.au)" onclick="createInvite()">Invite</button><br><br>
+                <p>The following people can currently sign into this website and edit scores:</p>
+                <br><div id="userListDiv"><p id="userList"> </p></div>
+            </div>
+            <div class="containerChild" id="allInvites">
+              <p class="backButton" onclick="toggleAccessControlView()"><span class="leftArrow">↩</span> Go Back</p>
+                <div id="inviteListDiv"><p>The people below can create an account using their respective link. This account will have all permissions, including editing scores without approval:</p><br>
+                <ul id="inviteList"></ul>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="usermanager" class="container">
+      <div class="wrapper">
+          <div class="title"><span>Manage Users</span></div>
+          <div class="containerChild" id="usermanagerCC">
+              <p class="backButton" onclick="showContainer('more')"><span class="leftArrow">↩</span> Go Back</p>
+              <p>Emails are not verified. Please ensure the account creator is who you think it is.</p><br>
+            
+              <b>Awaiting Approval</b>
+            <div class="innerUserManager" id="awaitingApprovalDiv">
+              <div id="awaitingapprovallist"></div>
+            </div>
+
+            <b>Current User Accounts</b>
+              <div class="innerUserManager" id="currentAccountsDiv">
+              <div id="currentaccountslist"></div>
+            </div>
+          </div>
+          </div>
+          </div>
+      </div>
+
+    <div id="myrequests" class="container">
+      <div class="wrapper">
+          <div class="title"><span>My Requests</span></div>
+          <div id="myrequestsinner" class="containerChild">
+            <div>
+              <b>Your pending requests to add scores are displayed below:</b>
+            </div>
+            <div id="myPendingRequestsList">
+            </div>
+      </div>
+    </div>
+    </div>
+
+      <div class="popup" id="popup">
+        <div class="popup-header">
+          <span class="popup-label">Account</span>
+          <span class="close-btn" onclick="hidePopup(); accountPopupTrigger.src = '../assets/user-circle.svg';">𐌗</span>
+        </div>
+        <div class="popup-content">
+          <!---onclick="openPasswordModal(); dimScreen();"-->
+          <button class="setting-btn" id="changePassword" style="cursor: not-allowed;">Change Password</button>
+          <button class="setting-btn" onclick="signOut('device')" id="logOut">Log Out</button>
+          <button class="setting-btn" onclick="signOut('everywhere')" id="logOutEverywhere">Log Out Everywhere</button>
+        </div>
+      </div>
+
+      <div id="custom-toast" class="toast">
+        <span id="toast">Error during authentication</span>
+        <button id="dismiss-toast" onclick="dismissToast()">Dismiss</button>
+        <button id="email-toast">Help</button>
+      </div>
+    
+      <div id="pwModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closePasswordModal(); undimScreen();">&times;</span>
+          <h2>Change Password</h2><br>
+          <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" name="currentPassword">
+          </div>
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" name="newPassword">
+          </div>
+          <div class="form-group">
+            <label for="confirmNewPassword">Confirm New Password</label>
+            <input type="password" id="confirmNewPassword" name="confirmNewPassword">
+          </div><br>
+          <button id="changePasswordBtn" onclick="changePassword()">Change Password</button>
+        </div>
+      </div>
+      
+
+    <a href="../" class="scoreboardButton">Go To Scoreboard</a>
+
+    <script src="./accountmenu.js"></script>
+    <script src="../common.js"></script>
+    <script src="./manager.js"></script>
+</body>
+</html>
