@@ -585,7 +585,7 @@ function createInvite() {
         console.log('Invite created:', data);
         changeButtonText('createInviteButton', 'Invite');
         emailInput.value = '';
-        showPopup2('Invite Link', 'Send this link to ' + name + ' to invite them to this website:', 'https://score.joshnewman6.com/admin?email=' + email + '&inviteCode=' + inviteCode);
+        showPopup2('Invite Link', 'Send this link to ' + name + ' to invite them to this website:', 'https://scoreboard.hhs.sa.edu.au/admin?email=' + email + '&inviteCode=' + inviteCode);
     })
     .catch(error => console.error('Error creating invite:', error));
 }
@@ -641,7 +641,7 @@ function displayInvites(invites) {
         copyButton.textContent = 'Copy Link';
         copyButton.classList.add('inviteButtons');
         copyButton.id = `copyButton_${invite.email}`;
-        copyButton.addEventListener('click', () => showPopup2('Invite Link', 'Send this link to ' + inviteName + ' to invite them to this website:', 'https://score.joshnewman6.com/admin?email=' + invite.email + '&inviteCode=' + invite.inviteCode));
+        copyButton.addEventListener('click', () => showPopup2('Invite Link', 'Send this link to ' + inviteName + ' to invite them to this website:', 'https://scoreboard.hhs.sa.edu.au/admin?email=' + invite.email + '&inviteCode=' + invite.inviteCode));
 
         listItem.appendChild(revokeButton);
         listItem.appendChild(copyButton);
